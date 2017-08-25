@@ -13,7 +13,7 @@
         <div class="jumbotron">
             
             <div id="logo">
-                <h1>V.I.S</h1>
+                <h1 id="text">V.I.S</h1>
                 <h5>Vehicle Inventory Store</h5>
             </div>
             

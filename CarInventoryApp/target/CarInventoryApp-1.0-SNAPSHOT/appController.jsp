@@ -70,8 +70,15 @@
             <br/><br/>
             
             <div class="row">
-                <!--might need to be a form attached to a servlet-->
-                <div class="col-sm-12">
+               
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <a href="BuyerSearchForm.jsp" class="btn btn-info" name="Buyer" role="button">Buyer Search</a>
+                        <lable for="edit">Sold Vehicle List</lable>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6">
                     <div class="form-group">
                         <a href="#" class="btn btn-info" name="exit" role="button">Log Out</a>
                     </div>

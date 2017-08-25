@@ -18,14 +18,17 @@
        
         <div class="container">    
             
-            <form method="get" action="">
+            <form method="get" action="SearchInventory">
 
                 <div class="form-group">
-                    <label for="searchInventory">Enter Vehicle Vin</label>
-                    <input type="text" class="form-control" id="editVinTxt" name="searchInventory">
+                    <label for="attributeOfVehicleToSearchFor">Search For Vehicle By(make, model, year, vin)</label>
+                    <input type="text" class="form-control" name="attributeOfVehicleToSearchFor">
                 </div>
 
-
+                <div class="form-group">
+                    <label for="valueOfVehicleSearchAttribute">Enter Corresponding Value</label>
+                    <input type="text" class="form-control"  name="valueOfVehicleSearchAttribute">
+                </div>
 
                 <div class="form-group btn-group">
                     <input class="btn btn-info" type="submit" value="Search">

@@ -16,7 +16,7 @@
         
         <div class="container">
                                 
-            <form method="post" action="addServlet">
+            <form method="get" action="addServlet">
 
                 <div class="form-group">
                    <label for="make">Make</label>

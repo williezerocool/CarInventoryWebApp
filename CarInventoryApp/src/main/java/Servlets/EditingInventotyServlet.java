@@ -5,7 +5,6 @@
  */
 package Servlets;
 
-import com.mycompany.carInventoryApp.Car;
 import com.mycompany.carinventoryappDB.CarInventoryDBDataStore;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,10 +18,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "addServlet", urlPatterns = {"/addServlet"})
-public class addVehicleToDBServlet extends HttpServlet {
+/**
+ *
+ * @author kendrabooker
+ */
+@WebServlet(name = "EditingInventotyServlet", urlPatterns = {"/Editing"})
+public class EditingInventotyServlet extends HttpServlet {
 
-    
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -31,16 +42,24 @@ public class addVehicleToDBServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet addServlet</title>");            
+            out.println("<title>Servlet EditingInventotyServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet addServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet EditingInventotyServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-    
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -48,36 +67,39 @@ public class addVehicleToDBServlet extends HttpServlet {
         try {
             
             String vin = request.getParameter("vin");
-            String make = request.getParameter("make");
-            String model = request.getParameter("model");
-            String year = request.getParameter("year");
-            String details = request.getParameter("details");
+            String editArea = request.getParameter("editArea");
+            String edit = request.getParameter("edit");
             
             CarInventoryDBDataStore db = new CarInventoryDBDataStore();
-            Car car = new Car();
-            car.setVin(vin);
-            car.setCarMake(make);
-            car.setCarModel(model);
-            car.setYear(year);
-            car.setVehicleDetails(details);
-            db.addData(car);
+            db.editingData(vin, editArea, edit);
             
         } catch (SQLException ex) {
-            Logger.getLogger(addVehicleToDBServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditingInventotyServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        RequestDispatcher rd = request.getRequestDispatcher("appController.jsp");
-        rd.forward(request, response);
+            RequestDispatcher rd = request.getRequestDispatcher("appController.jsp");
+            rd.forward(request, response);
     }
 
-    
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -21,16 +21,21 @@
         
         <div class="container">
             
-            <form>
-
+            <form method="get" action="sellVehicle">
+                
                 <div class="form-group">
-                    <label for="buyerFirstName">First Name</label>
-                    <input type="text" class="form-control" id="buyerFirstNameTxt" name="buyerFirstName">
+                    <label for="vin">Vin Of Vehicle Being Sold</label>
+                    <input type="text" class="form-control" id="buyerFirstNameTxt" name="vin">
                 </div>
 
                 <div class="form-group">
-                    <label for="buyerLastName">Last Name</label>
-                    <input type="text" class="form-control" id="buyerLastNameTxt" name="buyerLastName">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="buyerFirstNameTxt" name="firstName">
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="buyerLastNameTxt" name="lastName">
                 </div>
 
 
@@ -50,8 +55,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="downPayment">Down Payment</label>
-                    <input type="text" class="form-control" id="addressTxt" name="downPayment">
+                    <label for="totalPaid">Total paid</label>
+                    <input type="text" class="form-control" id="addressTxt" name="totalPaid">
                 </div>
 
                 <div class="form-group btn-group">

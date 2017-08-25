@@ -21,18 +21,22 @@
         
         <div class="container">    
            
-            <form>
+            <form method="get" action="Editing">
 
                 <div class="form-group">
-                    <label for="editVin">Enter Vehicle Vin</label>
-                    <input type="text" class="form-control" id="editVinTxt" name="editVin">
+                    <label for="vin">Enter Vehicle Vin</label>
+                    <input type="text" class="form-control" id="editVinTxt" name="vin">
                 </div>
 
                 <div class="form-group">
                    <label for="editArea">Enter Area You Wish To Edit(make, model, vin, details)</label>
                    <input type="text" class="form-control" id="editAreaTxt" name="editArea">
-               </div>
+                </div>
 
+                <div class="form-group">
+                   <label for="edit">Enter Edit</label>
+                   <input type="text" class="form-control" id="editAreaTxt" name="edit">
+                </div>
 
 
                 <div class="form-group btn-group">

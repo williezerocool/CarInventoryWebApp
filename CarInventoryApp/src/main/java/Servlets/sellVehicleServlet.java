@@ -5,12 +5,11 @@
  */
 package Servlets;
 
-import com.mycompany.carInventoryApp.Car;
+import com.mycompany.carInventoryApp.Buyer;
 import com.mycompany.carinventoryappDB.CarInventoryDBDataStore;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -24,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author kendrabooker
  */
-@WebServlet(name = "SearchInventory", urlPatterns = {"/SearchInventory"})
-public class SearchInventoryServlet extends HttpServlet {
+@WebServlet(name = "sellVehicleServlet", urlPatterns = {"/sellVehicle"})
+public class sellVehicleServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +43,10 @@ public class SearchInventoryServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SearchInventory</title>");            
+            out.println("<title>Servlet sellVehicleServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SearchInventory at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet sellVehicleServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,24 +64,35 @@ public class SearchInventoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
         
-        try{
+        try {
+            
+            String vin = request.getParameter("vin");
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String address = request.getParameter("address");
+            String phoneNumber = request.getParameter("phoneNumber");
+            String purchasePrice = request.getParameter("purchasePrice");
+            String totalPaid = request.getParameter("totalPaid");
+            
+            Buyer buyer = new Buyer();
+            buyer.setVin(vin);
+            buyer.setFirstName(firstName);
+            buyer.setLastName(lastName);
+            buyer.setAddress(address);
+            buyer.setPhoneNumber(phoneNumber);
+            buyer.setPurchasePrice(Integer.parseInt(purchasePrice));
+            buyer.setTotalPaid(Integer.parseInt(totalPaid));
             
             CarInventoryDBDataStore db = new CarInventoryDBDataStore();
-            
-            String attributeOfVehicleToSearchFor = request.getParameter("attributeOfVehicleToSearchFor");
-            String valueOfVehicleSearchAttribute = request.getParameter("valueOfVehicleSearchAttribute");
-            
-            request.setAttribute("results", db.searchDB(attributeOfVehicleToSearchFor, valueOfVehicleSearchAttribute));
+            db.sell(buyer);
             
         } catch (SQLException ex) {
-            
-            Logger.getLogger(SearchInventoryServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(sellVehicleServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        RequestDispatcher rd = request.getRequestDispatcher("SearchResults.jsp");
-        rd.forward(request, response);
+            RequestDispatcher rd = request.getRequestDispatcher("appController.jsp");
+            rd.forward(request, response);
     }
 
     /**

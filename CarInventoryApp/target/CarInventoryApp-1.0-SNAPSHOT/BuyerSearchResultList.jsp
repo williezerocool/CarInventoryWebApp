@@ -1,36 +1,47 @@
-
+<%-- 
+    Document   : SoldVehicleList
+    Created on : Aug 22, 2017, 10:39:17 AM
+    Author     : kendrabooker
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>List Results</title>
+        <title>Buyer Search Result List</title>
     </head>
     <body>
         
         <header>
             <jsp:include page="Header.jsp"></jsp:include>   
         </header>
-        <h5>Complete Inventory List</h5>
+        <h5>Buyer Search Result List</h5>
         <hr/>
         
         <div class="container">
             
             <div class="row">
                 <div class="col-lg-4">
-                    <c:forEach var="car" items="${cars}">
+                   <c:forEach var="buyer" items="${buyers}">
                         <div>
-                           Make: ${car.carMake}
+                           First Name: ${buyer.firstName}
                            <br/>
-                           Model: ${car.carModel}
+                           Last Name: ${buyer.lastName}
                            <br/>
-                           Year: ${car.year}
+                           Address: ${buyer.address}
                            <br/>
-                           Vin: ${car.vin}
+                           Phone NUmber: ${buyer.phoneNumber}
+                           <br/>
+                           Purchase Price: ${buyer.purchasePrice}
+                           <br/>
+                           Total Paid: ${buyer.totalPaid}
+                           <br/>
+                           Vehicle Vin: ${buyer.vin}
+                           <br/>
                            <br/><br/><br/>
                         </div>
-                    </c:forEach>
+                    </c:forEach> 
                 </div>
             </div>
             

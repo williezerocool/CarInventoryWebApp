@@ -64,6 +64,42 @@ public class CarInventoryDBDataStore {
         
     }
     
+    public List<Buyer> listBuyerData(String firstName, String lastName) {
+        
+        List<Buyer> buyer = new ArrayList<>();
+        
+        try {
+           
+          
+          
+          String sql = "SELECT  first_name, last_name, address, phone_number, Purchase_price, total_paid, vin FROM buyer WHERE first_name = ? AND  last_name = ?";
+          
+          PreparedStatement stmt = conn.prepareStatement(sql);
+          stmt.setString(1, firstName);
+          stmt.setString(2, lastName);
+          
+          ResultSet rs = stmt.executeQuery();
+          
+          while(rs.next()) {
+          
+              Buyer newBuyer = new Buyer();
+              newBuyer.setFirstName(rs.getString(1));
+              newBuyer.setLastName(rs.getString(2));
+              newBuyer.setAddress(rs.getString(3));
+              newBuyer.setPhoneNumber(rs.getString(4));
+              newBuyer.setPurchasePrice(Integer.parseInt(rs.getString(5)) );
+              newBuyer.setTotalPaid(Integer.parseInt(rs.getString(6)) );
+              newBuyer.setVin(rs.getString(7));
+              
+              buyer.add(newBuyer);
+          }
+        }catch(SQLException ex) {
+        
+        }
+    
+        return buyer;
+    }
+    
     public Response addData(Car car) {
     
         Response result = new Response();
@@ -168,25 +204,29 @@ public class CarInventoryDBDataStore {
        
    }
    
-   public List<Car> searchDB(String vin) {
+    public List<Car> searchDB(String attributeOfCar, String valueOfCarAttribute) {
        
        List<Car> car = new ArrayList<>();
    
        try{
            
-           PreparedStatement stmt = conn.prepareStatement("SELECT make, model, year, vin, details FROM car WHERE vin = ?");
+           String sql = "SELECT make, model, year, vin, details FROM car WHERE " + attributeOfCar + " = ?";
            
-           stmt.setString(1, vin);
+           
+           
+           PreparedStatement stmt = conn.prepareStatement(sql);
+           
+           stmt.setString(1, valueOfCarAttribute);
            
            ResultSet rs =  stmt.executeQuery();
            
            while(rs.next()) {
            
                Car result = new Car();
-               result.setVin(rs.getString(1));
-               result.setCarMake(rs.getString(2));
-               result.setCarModel(rs.getString(3));
-               result.setYear(rs.getString(4));
+               result.setCarMake(rs.getString(1));
+               result.setCarModel(rs.getString(2));
+               result.setYear(rs.getString(3));
+               result.setVin(rs.getString(4));
                result.setVehicleDetails(rs.getString(5));
                 
                car.add(result);

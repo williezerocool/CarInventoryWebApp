@@ -18,12 +18,19 @@
         <div class="container">
             
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-4">
                     <c:forEach var="car" items="${cars}">
                         <div>
+                           Make: ${car.carMake}
+                           <br/>
+                           Model: ${car.carModel}
+                           <br/>
+                           Year: ${car.year}
+                           <br/>
                            Vin: ${car.vin}
+                           <br/><br/><br/>
                         </div>
-                 </c:forEach>
+                    </c:forEach>
                 </div>
             </div>
             

@@ -17,11 +17,11 @@
         
         <div class="container">
             
-            <form>
+            <form method="get" action="Remove">
                 
                 <div class="form-group">
-                    <label for="editVin">Enter Vehicle Vin</label>
-                    <input type="text" class="form-control" id="editVinTxt" name="editVin">
+                    <label for="vin">Enter Vehicle Vin</label>
+                    <input type="text" class="form-control" id="editVinTxt" name="vin">
                 </div>
 
                 <div class="form-group btn-group">

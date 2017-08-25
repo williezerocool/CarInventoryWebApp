@@ -19,9 +19,16 @@
             
             <div class="row">
                 <div class="col-lg-12">
-                    <c:forEach var="results" items="${searchResults}">
+                    <c:forEach var="results" items="${results}">
                         <div>
-                           Vin: ${results.vin}
+                            Make: ${results.carMake}
+                                    <br/>
+                            Model: ${results.carModel}
+                                    <br/>
+                            Year: ${results.year}
+                                    <br/>
+                            Vin: ${results.vin}
+                            <br/><br/><br/>
                         </div>
                  </c:forEach>
                 </div>
